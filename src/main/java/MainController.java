@@ -33,7 +33,6 @@ public class MainController {
     @FXML public Label expiredLabel;
 
     @FXML private void initialize() {
-        expiredLabel.setVisible(false);
         genQRCode(); // gen a QR code at startup
         genBtn.setOnAction(event -> genQRCode());
     }
@@ -54,9 +53,10 @@ public class MainController {
 
     private void genQRCode() {
         genBtn.setDisable(true); // disable btn to avoid spamming requests to the server
+        expiredLabel.setVisible(false);
 
         // Run slow operations in background thread to avoid blocking the UI thread (causes UI lag).
-        // Any update to UI elements must uses Platform.runLater(..) to do so or nothing will happen.
+        // Any update to UI elements must uses Platform.runLater(..).
         new Thread(() -> {
             try {
                 Thread.sleep(250); // let ripple animation finish
@@ -89,13 +89,13 @@ public class MainController {
                             }
 
                             Platform.runLater(() -> {
-                                expiredLabel.setVisible(false);
+                                expiredLabel.setVisible(true);
                                 progressBar.setProgress(0);
                                 genBtn.setDisable(false);
                             });
                         }).start();
 
-                        // display the QR code with the uuid and computer name embedded
+                        // display the QR code with the uuid and computer name embedded into it
                         byte[] imageBytes = QRCode.from(uuid + "\n" + computerName).withSize(368, 368).to(ImageType.JPG).stream().toByteArray();
                         ByteArrayInputStream imageStream = new ByteArrayInputStream(imageBytes);
                         Platform.runLater(() -> QRImage.setImage(new Image(imageStream)));
