@@ -89,7 +89,7 @@ public class MainController {
                             }
 
                             Platform.runLater(() -> {
-                                expiredLabel.setVisible(true);
+                                expiredLabel.setVisible(false);
                                 progressBar.setProgress(0);
                                 genBtn.setDisable(false);
                             });
