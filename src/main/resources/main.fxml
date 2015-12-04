@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="482.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
+    <bottom>
+        <JFXButton fx:id="genBtn" contentDisplay="CENTER" defaultButton="true" maxHeight="-Infinity" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #2196F3;" text="Generate  New QR Code" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
+            <font>
+                <Font size="18.0" />
+            </font>
+            <BorderPane.margin>
+                <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+            </BorderPane.margin>
+        </JFXButton>
+    </bottom>
+    <center>
+        <StackPane fx:id="stackPane">
+           <children>
+               <VBox prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="TOP_CENTER">
+                   <children>
+                       <ImageView fx:id="QRImage" fitHeight="368.0" fitWidth="368.0" pickOnBounds="true" preserveRatio="true">
+                           <VBox.margin>
+                               <Insets left="16.0" right="16.0" top="4.0" />
+                           </VBox.margin>
+                       </ImageView>
+                       <JFXProgressBar fx:id="progressBar" prefWidth="368.0">
+                           <VBox.margin>
+                               <Insets left="16.0" />
+                           </VBox.margin>
+                       </JFXProgressBar>
+                   </children>
+                   <BorderPane.margin>
+                       <Insets left="8.0" right="8.0" />
+                   </BorderPane.margin>
+               </VBox>
+           </children>
+        </StackPane>
+    </center>
+   <top>
+      <Label fx:id="expiredLabel" text="This QR code has expired!" textFill="#f44336" underline="true" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets top="4.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+</BorderPane>
